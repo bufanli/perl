@@ -12,3 +12,11 @@
 5. merge the coverage result.
    * `cover`
 6. then the coverage result will appear in cover_db.
+
+# perl performance test
+1. install Devel::NYTProf.
+    * `cpan Devel::NYTProf`.
+2. execute program using Devel::NYTProf.
+    * `perl -d:NYTProf perform.pl`
+3. generate html result
+    * `nytprofhtml --open`
