@@ -1,5 +1,5 @@
 use lib "./lib";
-use Game;
+use Popu::Game;
 use Test::More;
 use base qw(Test::Class);
 

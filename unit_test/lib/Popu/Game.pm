@@ -1,4 +1,4 @@
-package Game;
+package Popu::Game;
 
 use strict;
 use warnings;
