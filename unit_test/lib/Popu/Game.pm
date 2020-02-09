@@ -15,7 +15,7 @@ sub reversHash {
 
 sub getPlayers {
     my ($player_hash_ref,$game) = @_;
-    my $game_hash_ref = Game::reversHash($player_hash_ref);
+    my $game_hash_ref = Popu::Game::reversHash($player_hash_ref);
     if(exists $game_hash_ref->{$game}){
         return @{$game_hash_ref->{$game}};
     }else{

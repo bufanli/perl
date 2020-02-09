@@ -2,6 +2,7 @@ use lib "./lib";
 use Popu::Game;
 use Test::More;
 use base qw(Test::Class);
+#use Test::MockObject;
 
 my %players;
 
@@ -17,17 +18,22 @@ sub end : Test(teardown) {
 }
 
 sub test_reverse : Test(1) {
-    my $games_ref = Game::reversHash(\%players);
+    my $games_ref = Popu::Game::reversHash(\%players);
     my %games = ( '°ÎºÓ' => ['Ğ¡A','Ğ¡C'],
         'àªàªÇò' => ['Ğ¡A','Ğ¡B','Ğ¡C'],
         '°óÍÈÅÜ' => ['Ğ¡B'] );
     is_deeply($games_ref,\%games,"reverse_Hash test");
+    # my $mock = MockObject->new(); 
+    #$mock->mock( 'fluorinate',
+    #    sub { 'impurifying precious bodily fluids' } );
+    #print $mock->fluorinate;
+
 }
 
 sub test_getPlayers : Test(2) {
-    my @players = Game::getPlayers(\%players,'°óÍÈÅÜ');
+    my @players = Popu::Game::getPlayers(\%players,'°óÍÈÅÜ');
     is_deeply(['Ğ¡B'],\@players,"getPlayers test: match set");
-    ok( Game::getPlayers(\%players,'ÀºÇò') eq "","getPlayers test: empty set");
+    ok( Popu::Game::getPlayers(\%players,'ÀºÇò') eq "","getPlayers test: empty set");
 }
  
 
