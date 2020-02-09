@@ -11,6 +11,9 @@ sub initial : Test(setup) {
     'Ğ¡B' => ['àªàªÇò','°óÍÈÅÜ'],
     'Ğ¡C' => ['°ÎºÓ','àªàªÇò'] );
     print "Begin One Test...\n";
+    my $mock = Test::MockObject->new(); 
+    $mock->fake_module( 'Popu::Game',
+        fluorinate=>sub() {print  'impurifying precious bodily fluids' } );
 }
 
 sub end : Test(teardown) {
@@ -23,11 +26,6 @@ sub test_reverse : Test(1) {
         'àªàªÇò' => ['Ğ¡A','Ğ¡B','Ğ¡C'],
         '°óÍÈÅÜ' => ['Ğ¡B'] );
     is_deeply($games_ref,\%games,"reverse_Hash test");
-    my $mock = Test::MockObject->new(); 
-    $mock->mock( 'fluorinate',
-        sub { 'impurifying precious bodily fluids' } );
-    print $mock->fluorinate;
-
 }
 
 sub test_getPlayers : Test(2) {

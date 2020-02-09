@@ -10,6 +10,7 @@ sub reversHash {
             push @{$out{$_}},$key;
         }
     }
+    &fluorinate();
     return \%out;
 }
 
