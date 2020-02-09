@@ -2,7 +2,7 @@ use lib "./lib";
 use Popu::Game;
 use Test::More;
 use base qw(Test::Class);
-#use Test::MockObject;
+use Test::MockObject;
 
 my %players;
 
@@ -23,10 +23,10 @@ sub test_reverse : Test(1) {
         '嗒嗒球' => ['小A','小B','小C'],
         '绑腿跑' => ['小B'] );
     is_deeply($games_ref,\%games,"reverse_Hash test");
-    # my $mock = MockObject->new(); 
-    #$mock->mock( 'fluorinate',
-    #    sub { 'impurifying precious bodily fluids' } );
-    #print $mock->fluorinate;
+    my $mock = Test::MockObject->new(); 
+    $mock->mock( 'fluorinate',
+        sub { 'impurifying precious bodily fluids' } );
+    print $mock->fluorinate;
 
 }
 
